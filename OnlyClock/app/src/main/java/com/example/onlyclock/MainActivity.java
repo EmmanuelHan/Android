@@ -1,6 +1,7 @@
 package com.example.onlyclock;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -67,20 +68,20 @@ public class MainActivity extends AppCompatActivity {
                     week = "星期六";
                     break;
             }
-            if(2 <= dayOfWeek && dayOfWeek < 7){//在上班时间
-                if(0 <= hour && hour < 6){
+            if(1 < dayOfWeek && dayOfWeek < 7){//在上班时间
+                if(-1 < hour && hour < 6){
                     setBrightness(MainActivity.this,0);
-                } else if(6 <= hour && hour < 8){
+                } else if(5 < hour && hour < 8){
                     setBrightness(MainActivity.this,120);
-                } else if(8 <= hour && hour < 24){
+                } else if(7 < hour && hour < 24){
                     setBrightness(MainActivity.this,10);
                 }
             } else {//在非工作日
-                if(0 <= hour && hour < 6){
+                if(-1 < hour && hour < 6){
                     setBrightness(MainActivity.this,0);
-                } else if(6 <= hour && hour < 19){
+                } else if(7 < hour && hour < 19){
                     setBrightness(MainActivity.this,120);
-                } else if(19 <= hour && hour < 24){
+                } else if(18 < hour && hour < 24){
                     setBrightness(MainActivity.this,10);
                 }
             }
@@ -99,6 +100,19 @@ public class MainActivity extends AppCompatActivity {
 
             mTv5 = findViewById(R.id.tv_5);
             mTv5.setText(week);
+            if(23 < hour && hour < 6){
+                mTv1.setTextColor(Color.parseColor("#7B7B7B"));
+                mTv2.setTextColor(Color.parseColor("#7B7B7B"));
+                mTv3.setTextColor(Color.parseColor("#7B7B7B"));
+                mTv4.setTextColor(Color.parseColor("#7B7B7B"));
+                mTv5.setTextColor(Color.parseColor("#7B7B7B"));
+            } else {
+                mTv1.setTextColor(Color.parseColor("#FFFFFF"));
+                mTv2.setTextColor(Color.parseColor("#FFFFFF"));
+                mTv3.setTextColor(Color.parseColor("#FFFFFF"));
+                mTv4.setTextColor(Color.parseColor("#FFFFFF"));
+                mTv5.setTextColor(Color.parseColor("#FFFFFF"));
+            }
         }
     };
 
